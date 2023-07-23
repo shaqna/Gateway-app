@@ -22,7 +22,7 @@ class BeaconRepositoryImpl(
     override suspend fun sendBeaconData(bleDevice: BleDevice): Flow<BaseResult<String, String>> =
         flow {
             val item = Item(
-                timeStamp = bleDevice.timestamp,
+                timeStamp = bleDevice.timestamp.toString(),
                 beaconAddress = bleDevice.deviceAddress,
                 rssi = bleDevice.rssi
             )
