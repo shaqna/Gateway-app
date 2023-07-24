@@ -1,0 +1,42 @@
+{
+  "code": 200,
+  "message": "success fetch data",
+  "data": [
+    {
+      "id": "1",
+      "name": "Halte 1",
+      "latitude": -999.444,
+      "longitude": 4444.3444
+    },
+    {
+      "id": "2",
+      "name": "Halte 2",
+      "latitude": -999.444,
+      "longitude": 4444.3444
+    },
+    {
+      "id": "3",
+      "name": "Halte 3",
+      "latitude": -999.444,
+      "longitude": 4444.3444
+    },
+    {
+      "id": "4",
+      "name": "Halte 4",
+      "latitude": -999.444,
+      "longitude": 4444.3444
+    },
+    {
+      "id": "5",
+      "name": "Halte 5",
+      "latitude": -999.444,
+      "longitude": 4444.3444
+    },
+    {
+      "id": "6",
+      "name": "Halte 6",
+      "latitude": -999.444,
+      "longitude": 4444.3444
+    }
+  ]
+}
