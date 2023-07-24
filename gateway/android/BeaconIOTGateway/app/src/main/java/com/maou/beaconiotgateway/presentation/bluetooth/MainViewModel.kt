@@ -1,4 +1,4 @@
-package com.maou.beaconiotgateway.presentation
+package com.maou.beaconiotgateway.presentation.bluetooth
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -8,7 +8,6 @@ import com.maou.beaconiotgateway.domain.model.BleDevice
 import com.maou.beaconiotgateway.domain.usecase.BeaconUseCase
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch

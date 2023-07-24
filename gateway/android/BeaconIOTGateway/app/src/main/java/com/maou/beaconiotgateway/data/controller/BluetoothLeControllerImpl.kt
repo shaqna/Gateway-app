@@ -8,8 +8,7 @@ import android.content.Context
 import android.util.Log
 import com.maou.beaconiotgateway.domain.controller.BluetoothLeController
 import com.maou.beaconiotgateway.domain.model.BleDevice
-import com.maou.beaconiotgateway.presentation.MainActivity
-import com.maou.beaconiotgateway.utils.TimeHelper
+import com.maou.beaconiotgateway.presentation.bluetooth.MainActivity
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow

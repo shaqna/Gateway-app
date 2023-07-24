@@ -33,7 +33,7 @@
         android:theme="@style/Theme.BeaconIOTGateway"
         tools:targetApi="31">
         <activity
-            android:name=".presentation.MainActivity"
+            android:name=".presentation.bluetooth.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

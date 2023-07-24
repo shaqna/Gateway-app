@@ -1,4 +1,4 @@
-package com.maou.beaconiotgateway.presentation
+package com.maou.beaconiotgateway.presentation.bluetooth
 
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
@@ -24,13 +24,13 @@ class BleAdapter : RecyclerView.Adapter<BleAdapter.ViewHolder>() {
         notifyDataSetChanged()
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BleAdapter.ViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val itemBinding =
             ItemDeviceBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return ViewHolder(itemBinding)
     }
 
-    override fun onBindViewHolder(holder: BleAdapter.ViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.bind(listItem[position])
     }
 

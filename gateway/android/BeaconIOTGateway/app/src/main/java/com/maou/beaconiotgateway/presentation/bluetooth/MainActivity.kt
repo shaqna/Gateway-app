@@ -1,4 +1,4 @@
-package com.maou.beaconiotgateway.presentation
+package com.maou.beaconiotgateway.presentation.bluetooth
 
 import android.Manifest
 import android.annotation.SuppressLint
