@@ -1,0 +1,21 @@
+{
+  "code": 200,
+  "message": "success fetch data",
+  "data": [
+    {
+      "id": "1",
+      "name": "Bus 1",
+      "address": "address bus 1"
+    },
+    {
+      "id": "2",
+      "name": "Bus 2",
+      "address": "address bus 2"
+    },
+    {
+      "id": "3",
+      "name": "Bus 3",
+      "address": "address bus 2"
+    }
+  ]
+}
