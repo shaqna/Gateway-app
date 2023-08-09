@@ -9,9 +9,10 @@
         android:id="@+id/tvAddressTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Address :"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_marginTop="8dp"
+        android:text="Address:"
+        app:layout_constraintStart_toStartOf="@+id/tvDeviceNameTitle"
+        app:layout_constraintTop_toBottomOf="@+id/tvDeviceNameTitle" />
 
     <TextView
         android:id="@+id/tvDeviceAddress"
@@ -70,4 +71,22 @@
         android:background="@android:color/darker_gray"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvTimestampTitle" />
+
+    <TextView
+        android:id="@+id/tvDeviceNameTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Name:"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvDeviceName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="Beacon Kuning"
+        app:layout_constraintBottom_toBottomOf="@+id/tvDeviceNameTitle"
+        app:layout_constraintStart_toEndOf="@+id/tvDeviceNameTitle"
+        app:layout_constraintTop_toTopOf="@+id/tvDeviceNameTitle" />
 </androidx.constraintlayout.widget.ConstraintLayout>
