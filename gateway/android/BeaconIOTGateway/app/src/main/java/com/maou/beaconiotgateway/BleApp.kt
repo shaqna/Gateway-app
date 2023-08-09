@@ -1,6 +1,7 @@
 package com.maou.beaconiotgateway
 
 import android.app.Application
+import com.maou.beaconiotgateway.di.busModule
 import com.maou.beaconiotgateway.di.dataModule
 import com.maou.beaconiotgateway.di.domainModule
 import com.maou.beaconiotgateway.di.retrofitModule
@@ -17,7 +18,8 @@ class BleApp: Application() {
                 listOf(
                     dataModule,
                     domainModule,
-                    retrofitModule
+                    retrofitModule,
+                    busModule
                 )
             )
         }

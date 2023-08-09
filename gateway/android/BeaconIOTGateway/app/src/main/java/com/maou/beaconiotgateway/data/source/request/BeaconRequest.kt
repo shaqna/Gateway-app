@@ -16,6 +16,9 @@ data class Payload(
 )
 
 data class Item(
+    @field:Json(name = "bus_stoppan")
+    val busStop: Int,
+
     @field:Json(name="time_stamp")
     val timeStamp: String,
 

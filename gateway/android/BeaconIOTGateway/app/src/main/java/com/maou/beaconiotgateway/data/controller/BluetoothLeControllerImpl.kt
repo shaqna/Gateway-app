@@ -8,7 +8,8 @@ import android.content.Context
 import android.util.Log
 import com.maou.beaconiotgateway.domain.controller.BluetoothLeController
 import com.maou.beaconiotgateway.domain.model.BleDevice
-import com.maou.beaconiotgateway.presentation.bluetooth.MainActivity
+import com.maou.beaconiotgateway.domain.model.Bus
+import com.maou.beaconiotgateway.presentation.scan.MainActivity
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -38,9 +39,15 @@ class BluetoothLeControllerImpl(
         .build()
 
     private val bleScanCallback = BleScanCallback { result ->
-        if(result.device.address == BEACON_COCONUT) {
+        val addressToFind = result.device.address
+        val beaconWithAddress = _scanListTarget.value.find {
+            it.address == addressToFind
+        }
+
+        if(beaconWithAddress != null) {
             _scannedDevice.update { bleDevices ->
                 val newDevice = BleDevice(
+                    deviceName = beaconWithAddress.name,
                     deviceAddress = result.device.address,
                     rssi = result.rssi,
                     timestamp = result.timestampNanos
@@ -55,10 +62,15 @@ class BluetoothLeControllerImpl(
 
     private val _scannedDevice = MutableStateFlow<List<BleDevice>>(emptyList())
 
+    private val _scanListTarget = MutableStateFlow<List<Bus>>(emptyList())
+
     override val scannedDevice: StateFlow<List<BleDevice>>
         get() = _scannedDevice.asStateFlow()
 
-    override fun startLeScanning() {
+    override fun startLeScanning(scanTarget: List<Bus>) {
+        _scanListTarget.update {
+            scanTarget
+        }
         _scannedDevice.update {
             emptyList()
         }

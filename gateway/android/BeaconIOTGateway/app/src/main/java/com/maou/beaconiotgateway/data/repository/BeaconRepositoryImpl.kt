@@ -13,15 +13,15 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
-import java.sql.Timestamp
 
 class BeaconRepositoryImpl(
     private val apiService: ApiService
 ) : BeaconRepository {
 
-    override suspend fun sendBeaconData(bleDevice: BleDevice): Flow<BaseResult<String, String>> =
+    override suspend fun sendBeaconData(bleDevice: BleDevice, busStopId: Int): Flow<BaseResult<String, String>> =
         flow {
             val item = Item(
+                busStop = busStopId,
                 timeStamp = bleDevice.timestamp.toString(),
                 beaconAddress = bleDevice.deviceAddress,
                 rssi = bleDevice.rssi
