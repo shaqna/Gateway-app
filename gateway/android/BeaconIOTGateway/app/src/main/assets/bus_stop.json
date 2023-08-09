@@ -4,39 +4,57 @@
   "data": [
     {
       "id": "1",
-      "name": "Halte 1",
-      "latitude": -999.444,
-      "longitude": 4444.3444
+      "name": "Halte Fantasi",
+      "latitude": 5.572914370142133,
+      "longitude": 95.3635510460482,
+      "active": false
     },
     {
       "id": "2",
-      "name": "Halte 2",
-      "latitude": -999.444,
-      "longitude": 4444.3444
+      "name": "Halte Ekonomi",
+      "latitude": 5.578007,
+      "longitude": 95.363926,
+      "active": false
     },
     {
       "id": "3",
-      "name": "Halte 3",
-      "latitude": -999.444,
-      "longitude": 4444.3444
+      "name": "Halte Kedoteran",
+      "latitude": 5.564994,
+      "longitude": 95.372159,
+      "active": false
+
     },
     {
       "id": "4",
-      "name": "Halte 4",
-      "latitude": -999.444,
-      "longitude": 4444.3444
+      "name": "Halte UIN",
+      "latitude": 5.580862,
+      "longitude": 95.367536,
+      "active": false
+
     },
     {
       "id": "5",
-      "name": "Halte 5",
-      "latitude": -999.444,
-      "longitude": 4444.3444
+      "name": "Halte Asrama Mahasiswa",
+      "latitude": 5.577994,
+      "longitude": 95.363894,
+      "active": false
+
     },
     {
       "id": "6",
-      "name": "Halte 6",
-      "latitude": -999.444,
-      "longitude": 4444.3444
+      "name": "Halte Mesjid Jamik",
+      "latitude": 5.571494,
+      "longitude": 95.371684,
+      "active": false
+
+    },
+    {
+      "id": "7",
+      "name": "Halte Teknik",
+      "latitude": 5.566108,
+      "longitude": 95.366728,
+      "active": true
+
     }
   ]
 }
