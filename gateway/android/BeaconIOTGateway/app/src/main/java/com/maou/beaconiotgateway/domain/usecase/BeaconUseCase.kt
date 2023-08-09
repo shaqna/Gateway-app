@@ -6,6 +6,6 @@ import kotlinx.coroutines.flow.Flow
 
 interface BeaconUseCase {
 
-    suspend fun sendBeaconData(bleDevice: BleDevice): Flow<BaseResult<String, String>>
+    suspend fun sendBeaconData(bleDevice: BleDevice, busStopId: Int): Flow<BaseResult<String, String>>
 
 }
