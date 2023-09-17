@@ -56,20 +56,22 @@ class MainViewModel(
         bluetoothLeController.stopLeScanning()
     }
 
-    fun sendBeaconData(bleDevice: BleDevice) {
+    fun sendBeaconData(bleDevice: BleDevice, androidID: String) {
 
         val busStopActive = busStop.find {
             it.active
         }
 
         viewModelScope.launch {
-            beaconUseCase.sendBeaconData(bleDevice, busStopActive?.id!!.toInt()).collect { result ->
+            beaconUseCase.sendBeaconData(bleDevice, androidID).collect { result ->
                 when (result) {
                     is BaseResult.Error -> _beaconState.value =
                         BeaconUiState.OnErrorAction(result.message)
 
                     is BaseResult.Success -> _beaconState.value =
                         BeaconUiState.OnSuccessAction(result.data)
+
+                    else -> {}
                 }
             }
         }

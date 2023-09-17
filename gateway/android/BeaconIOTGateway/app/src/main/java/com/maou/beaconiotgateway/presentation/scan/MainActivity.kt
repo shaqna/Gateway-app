@@ -10,6 +10,7 @@ import android.os.Build
 import android.os.Bundle
 import android.os.Environment
 import android.os.Handler
+import android.provider.Settings
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
@@ -50,6 +51,10 @@ class MainActivity : AppCompatActivity() {
     private val bluetoothAdapter: BluetoothAdapter by lazy {
         val bluetoothManager = getSystemService(BluetoothManager::class.java)
         bluetoothManager.adapter
+    }
+
+    private val androidID: String by lazy {
+        Settings.Secure.getString(contentResolver, Settings.Secure.ANDROID_ID)
     }
 
     private val bleAdapter by lazy {
@@ -236,7 +241,7 @@ class MainActivity : AppCompatActivity() {
                         bleAdapter.setItemList(state.scannedDevices)
                         if (state.scannedDevices.isNotEmpty()) {
                             Log.d("Sending", "${state.scannedDevices.last()}")
-                            viewModel.sendBeaconData(state.scannedDevices.last())
+                            viewModel.sendBeaconData(state.scannedDevices.last(), androidID)
                         }
                     }
                 }

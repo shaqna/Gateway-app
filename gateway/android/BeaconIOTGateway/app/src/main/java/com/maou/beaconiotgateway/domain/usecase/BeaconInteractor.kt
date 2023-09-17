@@ -6,7 +6,7 @@ import com.maou.beaconiotgateway.domain.repository.BeaconRepository
 import kotlinx.coroutines.flow.Flow
 
 class BeaconInteractor(private val beaconRepository: BeaconRepository) : BeaconUseCase{
-    override suspend fun sendBeaconData(bleDevice: BleDevice, busStopId: Int): Flow<BaseResult<String, String>> {
-        return beaconRepository.sendBeaconData(bleDevice, busStopId)
+    override suspend fun sendBeaconData(bleDevice: BleDevice, uniqueID: String): Flow<BaseResult<String, String>> {
+        return beaconRepository.sendBeaconData(bleDevice, uniqueID)
     }
 }

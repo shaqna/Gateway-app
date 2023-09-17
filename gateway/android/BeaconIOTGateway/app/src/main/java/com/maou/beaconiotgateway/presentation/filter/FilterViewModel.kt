@@ -50,6 +50,8 @@ class FilterViewModel(private val useCase: BusUseCase) : ViewModel() {
                         is BaseResult.Error -> showErrorBusMessage(result.message)
                         is BaseResult.Success -> _buses.value =
                             BusState.OnSuccessFetching(result.data)
+
+                        else -> {}
                     }
                 }
 
@@ -64,6 +66,8 @@ class FilterViewModel(private val useCase: BusUseCase) : ViewModel() {
                         is BaseResult.Error -> showErrorBusStopMessage(result.message)
                         is BaseResult.Success -> _busStops.value =
                             BusStopState.OnSuccessFetching(result.data)
+
+                        else -> {}
                     }
                 }
 

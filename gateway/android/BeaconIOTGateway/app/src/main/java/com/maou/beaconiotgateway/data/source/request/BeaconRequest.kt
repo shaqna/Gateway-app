@@ -7,24 +7,37 @@ data class BeaconRequest(
     val operation: String = "post-beacon",
 
     @field:Json(name = "payload")
-    val payload: Payload
-)
-
-data class Payload(
-    @field:Json(name = "Item")
-    val item: Item
+    val payload: Item
 )
 
 data class Item(
-    @field:Json(name = "bus_stoppan")
-    val busStop: Int,
+    @field:Json(name = "Item")
+    val item: Payload
+)
 
-    @field:Json(name="time_stamp")
-    val timeStamp: String,
+data class Payload(
+    @field:Json(name = "timestamp")
+    val timestamp: Long,
 
-    @field:Json(name = "beacon_address")
-    val beaconAddress: String,
+    @field:Json(name = "deviceID")
+    val deviceID: String,
+
+    @field:Json(name = "bleAddress")
+    val bleAddress: String,
+
+    @field:Json(name = "distance")
+    val distance: Double,
+
+    @field:Json(name = "isRead")
+    val isRead: Int = 0,
+
+    @field:Json(name = "proximityUUID")
+    val proximityUUID: String,
 
     @field:Json(name = "rssi")
-    val rssi: Int
+    val rssi: Int,
+
+    @field:Json(name = "txPower")
+    val txPower: Int
 )
+

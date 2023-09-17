@@ -18,21 +18,24 @@ class BeaconRepositoryImpl(
     private val apiService: ApiService
 ) : BeaconRepository {
 
-    override suspend fun sendBeaconData(bleDevice: BleDevice, busStopId: Int): Flow<BaseResult<String, String>> =
+    override suspend fun sendBeaconData(bleDevice: BleDevice, uniqueID: String): Flow<BaseResult<String, String>> =
         flow {
-            val item = Item(
-                busStop = busStopId,
-                timeStamp = bleDevice.timestamp.toString(),
-                beaconAddress = bleDevice.deviceAddress,
-                rssi = bleDevice.rssi
+            val payload = Payload(
+                timestamp = bleDevice.timestamp,
+                deviceID = uniqueID,
+                distance = bleDevice.distance,
+                txPower = bleDevice.txPower,
+                rssi = bleDevice.rssi,
+                proximityUUID = bleDevice.proximityUUID,
+                bleAddress = bleDevice.deviceAddress
             )
-            val response = apiService.sendBeaconData(BeaconRequest(payload = Payload(item)))
-            Log.d("Repository", "response code ${response.code}")
-            if (response.code != 200) {
-                emit(BaseResult.Error(response.message))
+            val response = apiService.sendBeaconData(BeaconRequest(payload = Item(item = payload)))
+            Log.d("Repository", "response code ${response.statusCode}")
+            if (response.statusCode != 200) {
+                emit(BaseResult.Error("Something wrong"))
             }
 
-            emit(BaseResult.Success(response.message))
+            emit(BaseResult.Success("Success"))
 
         }.catch { e ->
             emit(BaseResult.Error(e.message.toString()))

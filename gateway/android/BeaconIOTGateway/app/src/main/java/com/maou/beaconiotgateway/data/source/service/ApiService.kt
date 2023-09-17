@@ -7,10 +7,14 @@ import retrofit2.http.Body
 import retrofit2.http.POST
 
 interface ApiService {
+//
+//    @POST("default/gateway/postbeacon")
+//    suspend fun sendBeaconData(
+//        @Body beaconRequest: BeaconRequest
+//    ): GeneralResponse
 
-    @POST("prod/bus")
+    @POST("dev/bus")
     suspend fun sendBeaconData(
         @Body beaconRequest: BeaconRequest
     ): GeneralResponse
-
 }

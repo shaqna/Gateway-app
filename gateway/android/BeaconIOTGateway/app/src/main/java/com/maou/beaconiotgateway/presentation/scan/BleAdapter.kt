@@ -43,7 +43,7 @@ class BleAdapter : RecyclerView.Adapter<BleAdapter.ViewHolder>() {
 
             fun bind(items: BleDevice) {
                 with(binding) {
-                    tvDeviceName.text = items.deviceName
+                    tvDeviceName.text = items.proximityUUID
                     tvDeviceAddress.text = items.deviceAddress
                     tvDeviceRssi.text = "${items.rssi} dBm"
                     tvDeviceDate.text = TimeHelper.timestampToDate(items.timestamp)

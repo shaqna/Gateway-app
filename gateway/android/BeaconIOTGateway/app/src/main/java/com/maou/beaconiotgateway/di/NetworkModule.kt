@@ -17,7 +17,7 @@ val retrofitModule = module {
             addInterceptor(HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY))
         }
 
-        val retrofit = Retrofit.Builder().baseUrl(Constants.BASE_URL)
+        val retrofit = Retrofit.Builder().baseUrl(Constants.USK_URL)
             .addConverterFactory(MoshiConverterFactory.create())
             .client(
                 httpClient.build()

@@ -14,6 +14,8 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
+import java.text.DecimalFormat
+import kotlin.math.pow
 
 @SuppressLint("MissingPermission")
 class BluetoothLeControllerImpl(
@@ -45,24 +47,54 @@ class BluetoothLeControllerImpl(
         }
 
         if(beaconWithAddress != null) {
+            Log.d("Beacon",
+                """
+                    txPower = ${result.txPower}
+                    bleAddress = ${result.device.address}
+                    uuid = ${result.scanRecord?.serviceUuids}
+                    distance = ${calculateDistance(result.rssi, result.txPower)}
+                 
+                """.trimIndent())
+
             _scannedDevice.update { bleDevices ->
+
                 val newDevice = BleDevice(
-                    deviceName = beaconWithAddress.name,
                     deviceAddress = result.device.address,
                     rssi = result.rssi,
-                    timestamp = result.timestampNanos
+                    timestamp = result.timestampNanos,
+                    txPower = result.txPower,
+                    proximityUUID = result.scanRecord?.serviceUuids!![0].toString(),
+                    distance = calculateDistance(result.rssi, result.txPower).toDouble()
                 )
                 Log.d(MainActivity.TAG, newDevice.toString())
                 bleDevices + newDevice
             }
             Log.d(MainActivity.TAG, _scannedDevice.value.size.toString())
         }
-
     }
 
     private val _scannedDevice = MutableStateFlow<List<BleDevice>>(emptyList())
 
     private val _scanListTarget = MutableStateFlow<List<Bus>>(emptyList())
+
+    private fun calculateDistance(rssi: Int, txPower: Int): Double {
+        val ratio = rssi * 1.0 / txPower
+        val df = DecimalFormat("#.################")
+        try {
+            return if (ratio < 1.0) {
+               // df.format(ratio.pow(10.0)).toDouble()
+                ratio.pow(10.0)
+            } else {
+                val accuracy = 0.89976 * ratio.pow(7.7095) + 0.111
+                //df.format(accuracy).toDouble()
+                accuracy
+            }
+        } catch (e: NumberFormatException) {
+            Log.e("Number Error", e.message.toString())
+        }
+
+        return 0.0
+    }
 
     override val scannedDevice: StateFlow<List<BleDevice>>
         get() = _scannedDevice.asStateFlow()
