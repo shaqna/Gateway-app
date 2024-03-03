@@ -79,10 +79,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setTargetView() {
-        val busStopActive = viewModel.busStop.find {
-            it.active
-        }
-        val location = "Loocation: ${busStopActive?.name}"
+
+        val location = "Location: ${viewModel.busStop?.name}"
         binding.tvBusStopLocation.text = location
     }
 
@@ -93,9 +91,9 @@ class MainActivity : AppCompatActivity() {
             intent.getParcelableArrayListExtra<Bus>(BUS)
         }
         val busStop = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-            intent.getParcelableArrayListExtra(BUS_STOP, BusStop::class.java)
+            intent.getParcelableExtra(BUS_STOP, BusStop::class.java)
         } else {
-            intent.getParcelableArrayListExtra<BusStop>(BUS_STOP)
+            intent.getParcelableExtra<BusStop>(BUS_STOP)
         }
 
         bus?.let {

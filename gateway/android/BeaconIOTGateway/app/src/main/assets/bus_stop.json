@@ -4,21 +4,21 @@
   "data": [
     {
       "id": "1",
-      "name": "Halte Fantasi",
+      "name": "Shelter Asrama",
       "latitude": 5.572914370142133,
       "longitude": 95.3635510460482,
       "active": false
     },
     {
       "id": "2",
-      "name": "Halte Ekonomi",
+      "name": "Shelter Gelanggang",
       "latitude": 5.578007,
       "longitude": 95.363926,
       "active": false
     },
     {
       "id": "3",
-      "name": "Halte Kedoteran",
+      "name": "Shelter MIPA",
       "latitude": 5.564994,
       "longitude": 95.372159,
       "active": false
@@ -26,7 +26,7 @@
     },
     {
       "id": "4",
-      "name": "Halte UIN",
+      "name": "Shelter FISIP",
       "latitude": 5.580862,
       "longitude": 95.367536,
       "active": false
@@ -34,7 +34,7 @@
     },
     {
       "id": "5",
-      "name": "Halte Asrama Mahasiswa",
+      "name": "Shelter FKH",
       "latitude": 5.577994,
       "longitude": 95.363894,
       "active": false
@@ -42,7 +42,7 @@
     },
     {
       "id": "6",
-      "name": "Halte Mesjid Jamik",
+      "name": "Shelter Masjid Jamik",
       "latitude": 5.571494,
       "longitude": 95.371684,
       "active": false
@@ -50,11 +50,162 @@
     },
     {
       "id": "7",
-      "name": "Halte Teknik",
+      "name": "Shelter Ekonomi",
       "latitude": 5.566108,
       "longitude": 95.366728,
-      "active": true
-
+      "active": false
+    },
+    {
+      "id": "8",
+      "name": "Shelter SMA 5",
+      "latitude": 5.566108,
+      "longitude": 95.366728,
+      "active": false
+    },
+    {
+      "id": "9",
+      "name": "Halte Keudah",
+      "latitude": 5.566108,
+      "longitude": 95.366728,
+      "active": false
+    },{
+      "id": "10",
+      "name": "Halte Mesjid Raya",
+      "latitude": 5.566108,
+      "longitude": 95.366728,
+      "active": false
+    },{
+      "id": "11",
+      "name": "Halte Simpang Lima",
+      "latitude": 5.566108,
+      "longitude": 95.366728,
+      "active": false
+    },{
+      "id": "12",
+      "name": "Halte Kp. Keuramat",
+      "latitude": 5.566108,
+      "longitude": 95.366728,
+      "active": false
+    },{
+      "id": "13",
+      "name": "Halte Sp. Jambo Tape",
+      "latitude": 5.566108,
+      "longitude": 95.366728,
+      "active": false
+    },{
+      "id": "14",
+      "name": "Halte RSU Zainal Abidin 1",
+      "latitude": 5.566108,
+      "longitude": 95.366728,
+      "active": false
+    },{
+      "id": "15",
+      "name": "Halte Kantor Gubernur",
+      "latitude": 5.566108,
+      "longitude": 95.366728,
+      "active": false
+    },{
+      "id": "16",
+      "name": "Shelter SMA 5",
+      "latitude": 5.566108,
+      "longitude": 95.366728,
+      "active": false
+    },{
+      "id": "17",
+      "name": "Halte Lingke",
+      "latitude": 5.566108,
+      "longitude": 95.366728,
+      "active": false
+    },{
+      "id": "18",
+      "name": "Halte Lamnyong 1",
+      "latitude": 5.566108,
+      "longitude": 95.366728,
+      "active": false
+    },{
+      "id": "19",
+      "name": "Halte Fakultas Teknik",
+      "latitude": 5.566108,
+      "longitude": 95.366728,
+      "active": false
+    },{
+      "id": "20",
+      "name": "Halte Fakultas Kedokteran",
+      "latitude": 5.566108,
+      "longitude": 95.366728,
+      "active": false
+    },{
+      "id": "21",
+      "name": "Halte Beurabong",
+      "latitude": 5.566108,
+      "longitude": 95.366728,
+      "active": false
+    },{
+      "id": "22",
+      "name": "Halte Mesjid Jami'",
+      "latitude": 5.566108,
+      "longitude": 95.366728,
+      "active": false
+    },{
+      "id": "23",
+      "name": "Halte Pintu Utama UIN AR Raniry",
+      "latitude": 5.566108,
+      "longitude": 95.366728,
+      "active": false
+    },{
+      "id": "24",
+      "name": "Halte Fakultas Ekonomi",
+      "latitude": 5.566108,
+      "longitude": 95.366728,
+      "active": false
+    },{
+      "id": "25",
+      "name": "Halte Lamnyong 2",
+      "latitude": 5.566108,
+      "longitude": 95.366728,
+      "active": false
+    },{
+      "id": "26",
+      "name": "Halte Sp. Mesra",
+      "latitude": 5.566108,
+      "longitude": 95.366728,
+      "active": false
+    },{
+      "id": "27",
+      "name": "Halte Dinas Keuangan",
+      "latitude": 5.566108,
+      "longitude": 95.366728,
+      "active": false
+    },{
+      "id": "28",
+      "name": "Halte RSU Zainal Abidin 2",
+      "latitude": 5.566108,
+      "longitude": 95.366728,
+      "active": false
+    },{
+      "id": "29",
+      "name": "Halte Jambo Tape",
+      "latitude": 5.566108,
+      "longitude": 95.366728,
+      "active": false
+    },{
+      "id": "30",
+      "name": "Halte Sp. Lima 2",
+      "latitude": 5.566108,
+      "longitude": 95.366728,
+      "active": false
+    },{
+      "id": "31",
+      "name": "Halte Kp. Keramat",
+      "latitude": 5.566108,
+      "longitude": 95.366728,
+      "active": false
+    },{
+      "id": "32",
+      "name": "Halte Peunayong",
+      "latitude": 5.566108,
+      "longitude": 95.366728,
+      "active": false
     }
   ]
 }

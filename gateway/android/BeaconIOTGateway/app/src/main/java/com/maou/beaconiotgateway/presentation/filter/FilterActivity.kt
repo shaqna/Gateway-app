@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.maou.beaconiotgateway.databinding.ActivityFilterBinding
 import com.maou.beaconiotgateway.domain.model.Bus
 import com.maou.beaconiotgateway.domain.model.BusStop
@@ -23,6 +24,14 @@ class FilterActivity : AppCompatActivity() {
         ActivityFilterBinding.inflate(layoutInflater)
     }
 
+    private val busStopAdapter: BusStopsAdapter by lazy {
+        BusStopsAdapter().apply {
+            setOnItemCallback {
+                viewModel.setSelectedBusStop(it)
+            }
+        }
+    }
+
     private val viewModel: FilterViewModel by viewModel()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -35,17 +44,27 @@ class FilterActivity : AppCompatActivity() {
         observeBus()
         observeBusStop()
         setButtonAction()
+        setRecyclerView()
 
+    }
+
+    private fun setRecyclerView() {
+        binding.rvBusStops.apply {
+            adapter = busStopAdapter
+            layoutManager = LinearLayoutManager(this@FilterActivity)
+        }
     }
 
     private fun setButtonAction() {
         binding.btnGoToScan.setOnClickListener {
-            if (viewModel.busTarget.isNotEmpty() && viewModel.busStopTarget.isNotEmpty()) {
+            if (viewModel.busTarget.isNotEmpty() && viewModel.busStopTarget != null) {
                 Intent(this@FilterActivity, MainActivity::class.java).also {
                     it.putParcelableArrayListExtra(MainActivity.BUS, ArrayList(viewModel.busTarget))
-                    it.putParcelableArrayListExtra(MainActivity.BUS_STOP, ArrayList(viewModel.busStopTarget))
+                    it.putExtra(MainActivity.BUS_STOP, viewModel.busStopTarget)
                     startActivity(it)
                 }
+            } else {
+                showToast("Please select bus stop target")
             }
         }
     }
@@ -96,7 +115,7 @@ class FilterActivity : AppCompatActivity() {
     }
 
     private fun setBusStop(busStops: List<BusStop>) {
-        viewModel.setSelectedBusStop(busStops)
+        busStopAdapter.setList(busStops)
     }
 
     private fun showToast(message: String) {

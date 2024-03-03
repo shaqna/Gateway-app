@@ -14,7 +14,7 @@ import org.koin.dsl.module
 
 class FilterViewModel(private val useCase: BusUseCase) : ViewModel() {
 
-    var busStopTarget: List<BusStop> = arrayListOf()
+    var busStopTarget: BusStop? = null
     var busTarget: List<Bus> = arrayListOf()
 
     private val _buses: MutableStateFlow<BusState> = MutableStateFlow(BusState.InitBusState)
@@ -33,7 +33,7 @@ class FilterViewModel(private val useCase: BusUseCase) : ViewModel() {
         _busStops.value = BusStopState.OnErrorFetching(message)
     }
 
-    fun setSelectedBusStop(busStop: List<BusStop>) {
+    fun setSelectedBusStop(busStop: BusStop) {
         busStopTarget = busStop
     }
 

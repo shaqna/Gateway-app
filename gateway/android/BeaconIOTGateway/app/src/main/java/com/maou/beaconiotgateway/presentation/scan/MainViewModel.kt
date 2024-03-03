@@ -22,7 +22,7 @@ class MainViewModel(
 ) : ViewModel() {
 
     var bus: List<Bus> = arrayListOf()
-    var busStop: List<BusStop> = arrayListOf()
+    var busStop: BusStop? = null
 
     private val _state = MutableStateFlow(BluetoothLeUiState())
     val state = combine(
@@ -43,7 +43,7 @@ class MainViewModel(
         bus = busTarget
     }
 
-    fun setBusStopTarget(busStopTarget: List<BusStop>) {
+    fun setBusStopTarget(busStopTarget: BusStop) {
         busStop = busStopTarget
     }
 
@@ -57,11 +57,6 @@ class MainViewModel(
     }
 
     fun sendBeaconData(bleDevice: BleDevice, androidID: String) {
-
-        val busStopActive = busStop.find {
-            it.active
-        }
-
         viewModelScope.launch {
             beaconUseCase.sendBeaconData(bleDevice, androidID).collect { result ->
                 when (result) {

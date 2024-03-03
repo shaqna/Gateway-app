@@ -4,13 +4,83 @@
   "data": [
     {
       "id": "1",
-      "name": "Beacon Kuning",
+      "name": "Beacon 1",
       "address": "C1:43:C1:7D:B3:C4"
     },
     {
       "id": "2",
-      "name": "Beacon Putih",
+      "name": "Beacon 2",
       "address": "C8:BF:9D:4C:8E:EB"
+    },
+    {
+      "id": "3",
+      "name": "Beacon 3",
+      "address": "FE:21:5F:E4:36:AF"
+    },
+    {
+      "id": "4",
+      "name": "Beacon 4",
+      "address": "EC:CD:C1:26:BC:F0"
+    },
+    {
+      "id": "5",
+      "name": "Beacon 5",
+      "address": "FA:3A:98:31:64:49"
+    },
+    {
+      "id": "6",
+      "name": "Beacon 6",
+      "address": "F6:F4:8C:64:B0:EA"
+    },
+    {
+      "id": "7",
+      "name": "Beacon 7",
+      "address": "F0:22:47:81:9E:E1"
+    },
+    {
+      "id": "8",
+      "name": "Beacon 8",
+      "address": "C3:AB:70:72:E3:12"
+    },
+    {
+      "id": "9",
+      "name": "Beacon 9",
+      "address": "E3:C4:8D:05:54:CF"
+    },
+    {
+      "id": "10",
+      "name": "Beacon 10",
+      "address": "F0:F8:C3:9B:7C:3A"
+    },
+    {
+      "id": "11",
+      "name": "Beacon 11",
+      "address": "DF:D4:ED:40:BF:5B"
+    },
+    {
+      "id": "12",
+      "name": "Beacon 12",
+      "address": "F9:6F:F1:98:0C:E8"
+    },
+    {
+      "id": "13",
+      "name": "Beacon 13",
+      "address": "F9:15:9F:25:44:B5"
+    },
+    {
+      "id": "14",
+      "name": "Beacon 14",
+      "address": "E4:63:A6:01:41:0C"
+    },
+    {
+      "id": "15",
+      "name": "Beacon 15",
+      "address": "D8:56:69:D0:31:3A"
+    },
+    {
+      "id": "16",
+      "name": "Beacon 16",
+      "address": "E5:9B:B7:DF:DE:1C"
     }
   ]
 }

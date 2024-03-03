@@ -9,5 +9,5 @@ data class BusStop(
     val name: String,
     val latitude: Double,
     val longitude: Double,
-    val active: Boolean
+    var active: Boolean
 ): Parcelable
