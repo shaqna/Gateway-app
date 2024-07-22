@@ -7,15 +7,15 @@ data class BeaconRequest(
     val operation: String = "post-beacon",
 
     @field:Json(name = "payload")
-    val payload: Item
-)
-
-data class Item(
-    @field:Json(name = "Item")
-    val item: Payload
+    val payload: Payload
 )
 
 data class Payload(
+    @field:Json(name = "Item")
+    val item: Item
+)
+
+data class Item(
     @field:Json(name = "timestamp")
     val timestamp: Long,
 
@@ -38,6 +38,9 @@ data class Payload(
     val rssi: Int,
 
     @field:Json(name = "txPower")
-    val txPower: Int
+    val txPower: Int,
+
+    @field:Json(name = "busStopName")
+    val busStopName: String
 )
 

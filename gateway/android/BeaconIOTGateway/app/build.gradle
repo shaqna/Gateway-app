@@ -6,12 +6,12 @@ plugins {
 
 android {
     namespace 'com.maou.beaconiotgateway'
-    compileSdk 33
+    compileSdk 34
 
     defaultConfig {
         applicationId "com.maou.beaconiotgateway"
         minSdk 26
-        targetSdk 33
+        targetSdk 34
         versionCode 1
         versionName "1.0"
 
@@ -61,5 +61,8 @@ dependencies {
 
     //gson
     implementation 'com.google.code.gson:gson:2.9.0'
+    implementation "androidx.work:work-runtime-ktx:2.8.1"
+
+
 
 }

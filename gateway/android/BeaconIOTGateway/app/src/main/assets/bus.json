@@ -81,6 +81,16 @@
       "id": "16",
       "name": "Beacon 16",
       "address": "E5:9B:B7:DF:DE:1C"
+    },
+    {
+      "id": "17",
+      "name": "Beacon 17",
+      "address": "E6:14:6A:D0:92:DD"
+    },
+    {
+      "id": "18",
+      "name": "Beacon 18",
+      "address": "F8:2F:9D:DF:97:2F"
     }
   ]
 }

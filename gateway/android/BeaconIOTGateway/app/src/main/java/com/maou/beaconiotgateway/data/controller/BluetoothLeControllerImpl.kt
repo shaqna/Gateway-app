@@ -3,7 +3,6 @@ package com.maou.beaconiotgateway.data.controller
 import android.annotation.SuppressLint
 import android.bluetooth.BluetoothAdapter
 import android.bluetooth.BluetoothManager
-import android.bluetooth.le.ScanFilter
 import android.bluetooth.le.ScanSettings
 import android.content.Context
 import android.util.Log
@@ -16,7 +15,6 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import java.text.DecimalFormat
-import kotlin.math.max
 import kotlin.math.pow
 
 @SuppressLint("MissingPermission")
@@ -43,7 +41,6 @@ class BluetoothLeControllerImpl(
         .build()
 
 
-
     private val bleScanCallback = BleScanCallback { result ->
         val addressToFind = result.device.address
         val beaconWithAddress = _scanListTarget.value.find {
@@ -53,27 +50,40 @@ class BluetoothLeControllerImpl(
 
         Log.d("ScannerBeacon", beaconWithAddress.toString())
 
-        if(beaconWithAddress != null && maxRssiTarget <= -50) {
-            Log.d("Beacon",
+        // if(beaconWithAddress != null  && maxRssiTarget <= -50)
+        if (beaconWithAddress != null) {
+            Log.d(
+                "Beacon",
                 """
                     txPower = ${result.txPower}
                     bleAddress = ${result.device.address}
                     uuid = ${result.scanRecord?.serviceUuids}
                     distance = ${calculateDistance(result.rssi, result.txPower)}
                  
-                """.trimIndent())
+                """.trimIndent()
+            )
 
             _scannedDevice.update { bleDevices ->
+                val currentTimestamp = System.currentTimeMillis()
+
+                Log.d("BleController", currentTimestamp.toString())
+
+                val proxUUID = if (result.scanRecord?.serviceUuids?.get(0) == null)
+                    "Unknown"
+                else
+                    result.scanRecord?.serviceUuids?.get(0).toString()
+
 
                 val newDevice = BleDevice(
                     deviceAddress = result.device.address,
                     rssi = result.rssi,
-                    timestamp = result.timestampNanos,
+                    timestamp = currentTimestamp,
                     txPower = result.txPower,
-                    proximityUUID = result.scanRecord?.serviceUuids!![0].toString(),
+                    proximityUUID = proxUUID,
                     distance = calculateDistance(result.rssi, result.txPower).toDouble()
                 )
                 Log.d(MainActivity.TAG, newDevice.toString())
+                Log.d(MainActivity.TAG, result.scanRecord?.serviceUuids?.get(0).toString())
                 bleDevices + newDevice
             }
             Log.d(MainActivity.TAG, _scannedDevice.value.size.toString())
@@ -89,7 +99,7 @@ class BluetoothLeControllerImpl(
         val df = DecimalFormat("#.################")
         try {
             return if (ratio < 1.0) {
-               // df.format(ratio.pow(10.0)).toDouble()
+                // df.format(ratio.pow(10.0)).toDouble()
                 ratio.pow(10.0)
             } else {
                 val accuracy = 0.89976 * ratio.pow(7.7095) + 0.111
@@ -116,6 +126,7 @@ class BluetoothLeControllerImpl(
             emptyList()
         }
         bleScanner.startScan(null, scanSettings, bleScanCallback)
+
     }
 
     override fun stopLeScanning() {

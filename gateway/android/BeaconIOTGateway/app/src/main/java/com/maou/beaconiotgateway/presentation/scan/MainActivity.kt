@@ -29,6 +29,7 @@ import com.maou.beaconiotgateway.domain.model.BleDevice
 import com.maou.beaconiotgateway.domain.model.Bus
 import com.maou.beaconiotgateway.domain.model.BusStop
 import com.maou.beaconiotgateway.utils.TimeHelper
+import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import org.apache.poi.ss.usermodel.BorderStyle
 import org.apache.poi.ss.usermodel.FillPatternType
@@ -42,7 +43,9 @@ import java.io.FileOutputStream
 import java.io.IOException
 
 
+@SuppressLint("HardwareIds")
 class MainActivity : AppCompatActivity() {
+
 
     private val binding: ActivityMainBinding by lazy {
         ActivityMainBinding.inflate(layoutInflater)
@@ -75,7 +78,29 @@ class MainActivity : AppCompatActivity() {
         checkPermissionGrant()
         setupAdapter()
         setupButtonAction()
+        //sendDeviceId()
+        observeDeviceIdState()
         observeBleDevice()
+    }
+
+    private fun observeDeviceIdState() {
+        lifecycleScope.launch {
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
+                viewModel.deviceIdUiState.collect {
+                    when(it) {
+                        DeviceIDUiState.InitDeviceIDState -> Unit
+                        is DeviceIDUiState.OnError -> {
+                            Toast.makeText(this@MainActivity, it.errMsg, Toast.LENGTH_SHORT).show()
+                        }
+                        is DeviceIDUiState.OnSuccess -> {}
+                    }
+                }
+            }
+        }
+    }
+
+    private fun sendDeviceId() {
+        viewModel.sendDeviceId(androidID)
     }
 
     private fun setTargetView() {
@@ -240,6 +265,7 @@ class MainActivity : AppCompatActivity() {
                         if (state.scannedDevices.isNotEmpty()) {
                             Log.d("Sending", "${state.scannedDevices.last()}")
                             viewModel.sendBeaconData(state.scannedDevices.last(), androidID)
+                            viewModel.sendDeviceId(androidID)
                         }
                     }
                 }
@@ -308,7 +334,7 @@ class MainActivity : AppCompatActivity() {
                 setItemList(emptyList())
                 clear()
             }
-            viewModel.startLeScanning()
+            viewModel.startLeScanning(this@MainActivity)
 
             Handler().postDelayed({
                 stopScanning()
@@ -333,7 +359,7 @@ class MainActivity : AppCompatActivity() {
                 setItemList(emptyList())
                 clear()
             }
-            viewModel.startLeScanning()
+            viewModel.startLeScanning(this@MainActivity)
 
         } else {
             requestPermissionLauncher.launch(
@@ -347,7 +373,7 @@ class MainActivity : AppCompatActivity() {
             Toast.makeText(this@MainActivity, "Scan stopped", Toast.LENGTH_SHORT).show()
             startButtonAvailability(true)
             startButtonPeriodicAvailability(true)
-            viewModel.stopLeScanning()
+            viewModel.stopLeScanning(this@MainActivity)
         } else {
             requestPermissionLauncher.launch(
                 blePermissions
@@ -409,7 +435,7 @@ class MainActivity : AppCompatActivity() {
                 Manifest.permission.ACCESS_FINE_LOCATION,
                 Manifest.permission.BLUETOOTH_ADMIN,
                 Manifest.permission.BLUETOOTH_CONNECT,
-                Manifest.permission.WRITE_EXTERNAL_STORAGE
+                Manifest.permission.WRITE_EXTERNAL_STORAGE,
             )
         } else {
             arrayOf(

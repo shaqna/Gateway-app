@@ -20,13 +20,13 @@ object TimeHelper {
 //        return 10.toDouble().pow(powValue)
 //    }
 
-    private fun timestampMillis(timestampNanos: Long): Long {
-        return System.currentTimeMillis() - SystemClock.elapsedRealtime() + timestampNanos / 1_000_000
-    }
+//    private fun timestampMillis(timestampNanos: Long): Long {
+//        return System.currentTimeMillis() - SystemClock.elapsedRealtime() + timestampNanos / 1_000_000
+//    }
 
     @SuppressLint("SimpleDateFormat")
-    fun timestampToDate(timestampNanos: Long): String {
-        val date = Date(timestampMillis(timestampNanos))
+    fun timestampToDate(timestamp: Long): String {
+        val date = Date(timestamp)
         return SimpleDateFormat("HH:mm:ss").format(date)
     }
 }
